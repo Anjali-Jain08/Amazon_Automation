@@ -98,8 +98,6 @@ public class Amazon_Library extends Amazon_DriverScript {
 		}
 		Amazon_FunctionLibrary.input(enterSearchKeyword, searchProduct);
 		Amazon_FunctionLibrary.click(clickOnSearch);
-		//return Amazon_FunctionLibrary.Iterate(totalBestSellers);
-		
 	}
 	
 	public static void addBestSellers_ProductToCart() {
@@ -126,7 +124,6 @@ public class Amazon_Library extends Amazon_DriverScript {
 	public static void addToCart_BestSellers() throws InterruptedException {
 		searchItemsOnAmazon();
 		System.out.println("out of search");
-		//amazonSearch_Product_BestSellers.searchBestSellers();
 		addBestSellers_ProductToCart();
 		
 		

@@ -9,8 +9,6 @@ public class navigateToAmazon extends Amazon_DriverScript {
 		
 		System.out.println("Reached navigateAndRegister testcases");
 		Amazon_Library.navigateAndLoginToAccount();
-		
-		//return "Navigated to RFS page" ;
 	}
 
 }
