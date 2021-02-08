@@ -1,16 +1,18 @@
 package testscripts;
 
+import java.util.ArrayList;
+import java.util.List;
+//import java.util.Set;
 //import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 //import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-
-import testcases.amazonSearch_Product_BestSellers;
 
 //import jxl.JXLException;
 
@@ -101,9 +103,26 @@ public class Amazon_Library extends Amazon_DriverScript {
 	}
 	
 	public static void addBestSellers_ProductToCart() {
-		amazonSearch_Product_BestSellers.searchBestSellers();
+		List<WebElement> products = driver.findElements(By.cssSelector(".s-result-item"));
+		List<WebElement> bestSellersContainer = new ArrayList<WebElement>();
+				
+	    for(WebElement e: products){
+	    	if (e.findElements(By.cssSelector("div>div>div>a>span[data-component-props*=\"best-seller\"]")).size()!=0){
+	    	bestSellersContainer.add(e);
+			}
+		}
 		
-		    }
+		for (WebElement e : bestSellersContainer){
+	    	WebElement ele = e.findElement(By.cssSelector(".s-image"));
+    		Amazon_FunctionLibrary.clickElement(ele);
+            Amazon_FunctionLibrary.switchWindows();
+            Amazon_FunctionLibrary.waitForElementToBeClickable(addToCart);
+            System.out.println("add to cart got clicked");
+            Amazon_FunctionLibrary.switchDefaultWindow();
+		}
+		}
+		
+		    
 			
 	
 	public static void navigateAndLoginToAccount() throws InterruptedException {
@@ -123,7 +142,6 @@ public class Amazon_Library extends Amazon_DriverScript {
 	
 	public static void addToCart_BestSellers() throws InterruptedException {
 		searchItemsOnAmazon();
-		System.out.println("out of search");
 		addBestSellers_ProductToCart();
 		
 		
