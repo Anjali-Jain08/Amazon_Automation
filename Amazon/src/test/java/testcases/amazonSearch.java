@@ -12,7 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+// Executing this file alone is working as expected and doing all the actions perfectly but using the same code in hybrid framework is slowing down the process
+// You can execute this class only to see the performed action on Amazon site.
 
 public class amazonSearch {
 
